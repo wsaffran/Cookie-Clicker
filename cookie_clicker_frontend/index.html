@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name = "viewport" content = "width = device-width, initial-scale = 1">
+      <link rel = "stylesheet"
+         href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel = "stylesheet"
+         href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+      <script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js">
+      </script>
+      <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+      </script>
+
   <meta charset="UTF-8">
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
@@ -9,20 +19,52 @@
   <link rel="stylesheet" href="src/index.css">
   <title>Cookie Clicker</title>
   <script src="src/index.js" defer></script>
-</head>
-<body>
 
-  <button id='start'>START</button>
+  <div class="card-panel blue darken-1">
+    <h3>Cookie Clicker</h3>
+  </div>
+
+</head>
+
+
+  <body>
+
+
+    <div class="row">
+          <div class="col s4">
+            <span class="flow-text">highscore</span>
+          </div>
+
+          <div class="col s4">
+            <span class="flow-text">
+              <button class="waves-effect waves-light btn blue darken-1" id='start'>START</button>
+              <h2 class="center-align">Cookie Count: <span id="cookie-count">0</span></h2>
+              <p id="cps"></p>
+              <img id='cookie-click' src="http://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ff.png" width="250px" height="250px"> <br>
+          </span>
+        </div>
+
+        <div class="col s4">
+          <span class="flow-text">Additional Features: <br>
+            <button class="waves-effect waves-light btn blue darken-1" id="ian">(20) Ian
+              <span>0</span>
+            </button> <br>
+            <button class="waves-effect waves-light btn blue darken-1" id="vicky">(20) Vicky
+              <span>0</span>
+            </button> <br>
+            <button class="waves-effect waves-light btn blue darken-1" id="alex">(250) Alex
+              <span>0</span>
+            </button><br>
+            <button class="waves-effect waves-light btn blue darken-1" id="finish">pause</button>
+
+          </span>
+        </div>
+
+    </div>
+
+
   <h1 id="count-down"></h1>
 
-  <h1>Cookie Clicker</h1>
-  <h2>Cookie Count: <span id="cookie-count">0</span></h2>
-  <p id="cps"></p>
-  <img id='cookie-click' src="http://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ff.png" width="250px" height="250px"> <br>
-  <button id="ian">(20) Ian <span>0</span></button>
-  <button id="vicky">(20) Vicky <span>0</span></button>
-  <button id="alex">(250) Alex <span>0</span></button>
-  <button id="finish">pause</button>
 
   <div class='form'>
     <form class="submit-highscore" style="">
@@ -34,7 +76,6 @@
     </form>
     <button id="restart-button">Restart</button>
   </div>
-
 
 </body>
 </html>
