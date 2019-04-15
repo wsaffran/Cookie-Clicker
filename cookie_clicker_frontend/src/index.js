@@ -3,13 +3,13 @@ const cookies = document.querySelector('#cookie-count')
 const clickCookie = document.querySelector('#cookie-click')
 
 const ianButton = document.querySelector('#ian')
-const ianSpan = ianButton.querySelector('span')
+const ianSpan = document.querySelector('#ian-amount')
 
 const vickyButton = document.querySelector('#vicky')
-const vickySpan = vickyButton.querySelector('span')
+const vickySpan = document.querySelector('#vicky-amount')
 
 const alexButton = document.querySelector('#alex')
-const alexSpan = alexButton.querySelector('span')
+const alexSpan = document.querySelector('#alex-amount')
 
 const restartButton = document.querySelector('#restart-button')
 
@@ -32,8 +32,12 @@ let startTime = 60
 let numCookies = 0
 let cps = 0
 let ians = 0
+let iansCost = 20
 let vickys = 0
+let vickysCost = 20
 let alexs = 0
+let alexsCost = 250
+
 
 
 // event listeners
@@ -70,8 +74,10 @@ clickCookie.addEventListener('click', (e) => {
 })
 
 ian.addEventListener('click', (e) => {
-  if (e.target.id === 'ian' && numCookies >= 20) {
-    numCookies -= 20
+  if (e.target.id === 'ian' && numCookies >= iansCost) {
+    numCookies -= iansCost
+    iansCost *= 1.15
+    document.querySelector('#ian-cost').innerText = `${Math.round(iansCost)}`
     cps += .1
     ians += 1
     cookies.innerText = Math.floor(numCookies)
@@ -81,8 +87,10 @@ ian.addEventListener('click', (e) => {
 })
 
 vicky.addEventListener('click', (e) => {
-  if (e.target.id === 'vicky' && numCookies >= 20) {
-    numCookies -= 20
+  if (e.target.id === 'vicky' && numCookies >= vickysCost) {
+    numCookies -= vickysCost
+    vickysCost *= 1.15
+    document.querySelector('#vicky-cost').innerText = `${Math.round(vickysCost)}`
     cps += .1
     vickys += 1
     cookies.innerText = Math.floor(numCookies)
@@ -92,8 +100,10 @@ vicky.addEventListener('click', (e) => {
 })
 
 alex.addEventListener('click', (e) => {
-  if (e.target.id === 'alex' && numCookies >= 250) {
-    numCookies -= 250
+  if (e.target.id === 'alex' && numCookies >= alexsCost) {
+    numCookies -= alexsCost
+    alexsCost *= 1.5
+    document.querySelector('#alex-cost').innerText = `${Math.round(alexsCost)}`
     cps += 1
     alexs += 1
     cookies.innerText = Math.floor(numCookies)
@@ -103,10 +113,32 @@ alex.addEventListener('click', (e) => {
 })
 
 // convert to HTML
+function highscoreToHTML(highscore) {
+  return `<li>${highscore.name}: ${highscore.highscore} cookies</li>`
+}
 
 // add elements to DOM
+function renderHighscores() {
+  const ol = document.createElement('ol')
+  ol.setAttribute('id', 'highscore-list')
+  fetchHighscores()
+  .then(json => {
+    let sortedList = json.sort(function(a, b) {
+      return a.highscore - b.highscore
+    })
+    sortedList.reverse().slice(1,11).forEach(highscore => {
+      ol.innerHTML += highscoreToHTML(highscore)
+    })
+  })
+  document.querySelector('#highscore-list').appendChild(ol)
+}
 
 // fetches
+function fetchHighscores() {
+  return fetch('http://localhost:3000/players')
+  .then(res => res.json())
+}
+
 function fetchSubmitForm(body) {
   return fetch('http://localhost:3000/players', {
     method: 'POST',
@@ -118,7 +150,6 @@ function fetchSubmitForm(body) {
   })
   .then(res => res.json())
 }
-
 // functions
 function submitGame() {
   cookieRate = clearInterval(cookieRate);
@@ -156,19 +187,26 @@ function restart() {
 }
 
 // start app
+
+renderHighscores()
+
 let cookieRate = setInterval(function() {
-  if (numCookies < 20) {
+  if (numCookies < iansCost) {
     ian.disabled = true
+  }
+  if (numCookies >= iansCost) {
+    ian.disabled = false
+  }
+  if (numCookies < vickysCost) {
     vicky.disabled = true
   }
-  if (numCookies >= 20) {
-    ian.disabled = false
+  if (numCookies >= vickysCost) {
     vicky.disabled = false
   }
-  if (numCookies < 250) {
+  if (numCookies < alexsCost) {
     alex.disabled = true
   }
-  if (numCookies >= 250) {
+  if (numCookies >= alexsCost) {
     alex.disabled = false
   }
   numCookies += cps
