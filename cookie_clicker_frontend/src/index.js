@@ -157,5 +157,19 @@ function restart() {
 
 // start app
 let cookieRate = setInterval(function() {
+  if (numCookies < 20) {
+    ian.disabled = true
+    vicky.disabled = true
+  }
+  if (numCookies >= 20) {
+    ian.disabled = false
+    vicky.disabled = false
+  }
+  if (numCookies < 250) {
+    alex.disabled = true
+  }
+  if (numCookies >= 250) {
+    alex.disabled = false
+  }
   numCookies += cps
   cookies.innerText = Math.floor(numCookies)}, 1000)
