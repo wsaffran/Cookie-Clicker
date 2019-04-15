@@ -11,12 +11,30 @@
   <script src="src/index.js" defer></script>
 </head>
 <body>
+
+  <button id='start'>START</button>
+  <h1 id="count-down"></h1>
+
   <h1>Cookie Clicker</h1>
   <h2>Cookie Count: <span id="cookie-count">0</span></h2>
   <p id="cps"></p>
-  <button id="cookie-click" >Cookie</button>
+  <img id='cookie-click' src="http://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ff.png" width="250px" height="250px"> <br>
   <button id="ian">(20) Ian <span>0</span></button>
   <button id="vicky">(20) Vicky <span>0</span></button>
   <button id="alex">(250) Alex <span>0</span></button>
+  <button id="finish">pause</button>
+
+  <div class='form'>
+    <form class="submit-highscore" style="">
+      <h3>Submit</h3>
+
+      <input type="text" name="name" value="" placeholder="username" class="input-text">
+      <br>
+      <input type="submit" name="submit" value="Submit" class="submit">
+    </form>
+    <button id="restart-button">Restart</button>
+  </div>
+
+
 </body>
 </html>

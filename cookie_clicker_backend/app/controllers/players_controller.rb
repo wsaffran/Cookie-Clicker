@@ -10,7 +10,7 @@ class PlayersController < ApplicationController
   end
 
   def create
-    @player = Player.find_or_create_by(name: params[:name], highscore: params[:score])
+    @player = Player.find_or_create_by(name: params[:name], highscore: params[:highscore])
     render json: @player
   end
 end
