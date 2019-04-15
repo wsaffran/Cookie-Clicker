@@ -1,0 +1,54 @@
+{
+  "players": [
+    {
+      "id": 1,
+      "name": "Mr. Bonkers",
+      "score": 0
+    },
+    {
+      "id": 2,
+      "name": "Nugget",
+      "score": 0
+    },
+    {
+      "id": 3,
+      "name": "Skittles",
+      "score": 0
+    },
+    {
+      "id": 4,
+      "name": "Buttercup",
+      "score": 0
+    },
+    {
+      "id": 5,
+      "name": "Lucipher",
+      "score": 0
+    },
+    {
+      "id": 6,
+      "name": "Snooper Pooper",
+      "score": 0
+    },
+    {
+      "id": 7,
+      "name": "Puddles",
+      "score": 0
+    },
+    {
+      "id": 8,
+      "name": "Mittens",
+      "score": 0
+    },
+    {
+      "id": 9,
+      "name": "Middens",
+      "score": 0
+    },
+    {
+      "id": 10,
+      "name": "Fido",
+      "score": 0
+    }
+  ]
+}
