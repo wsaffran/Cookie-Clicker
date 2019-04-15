@@ -31,12 +31,19 @@ let startTime = 60
 // Application State
 let numCookies = 0
 let cps = 0
+
 let ians = 0
 let iansCost = 20
+let ianscps = .1
+
 let vickys = 0
 let vickysCost = 20
+let vickyscps = .1
+
 let alexs = 0
 let alexsCost = 250
+let alexscps = 1
+
 
 
 
@@ -78,7 +85,8 @@ ian.addEventListener('click', (e) => {
     numCookies -= iansCost
     iansCost *= 1.15
     document.querySelector('#ian-cost').innerText = `${Math.round(iansCost)}`
-    cps += .1
+    cps += ianscps
+    ianscps *= 1.3
     ians += 1
     cookies.innerText = Math.floor(numCookies)
     ianSpan.innerText = ians
@@ -91,7 +99,8 @@ vicky.addEventListener('click', (e) => {
     numCookies -= vickysCost
     vickysCost *= 1.15
     document.querySelector('#vicky-cost').innerText = `${Math.round(vickysCost)}`
-    cps += .1
+    cps += vickyscps
+    vickyscps *= 1.3
     vickys += 1
     cookies.innerText = Math.floor(numCookies)
     vickySpan.innerText = vickys
@@ -104,7 +113,8 @@ alex.addEventListener('click', (e) => {
     numCookies -= alexsCost
     alexsCost *= 1.5
     document.querySelector('#alex-cost').innerText = `${Math.round(alexsCost)}`
-    cps += 1
+    cps += alexscps
+    alexscps *= 1.75
     alexs += 1
     cookies.innerText = Math.floor(numCookies)
     alexSpan.innerText = alexs
