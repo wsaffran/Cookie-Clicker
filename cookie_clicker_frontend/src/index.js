@@ -11,6 +11,9 @@ const vickySpan = document.querySelector('#vicky-amount')
 const alexButton = document.querySelector('#alex')
 const alexSpan = document.querySelector('#alex-amount')
 
+const dcvButton = document.querySelector('#double-click-value')
+const dcvCost = document.querySelector('#dcv-cost')
+
 const restartButton = document.querySelector('#restart-button')
 
 const cpsSpan = document.querySelector('#cps')
@@ -29,8 +32,11 @@ cpsSpan.innerText = '0 cookies per second'
 let startTime = 60
 
 // Application State
+let totalClicks = 0
+let totalCookies = 0
 let numCookies = 0
 let cps = 0
+let cpc = 1
 
 let ians = 0
 let iansCost = 20
@@ -44,6 +50,8 @@ let alexs = 0
 let alexsCost = 250
 let alexscps = 1
 
+let dcvs = 0
+let dcvsCost = 200
 
 
 
@@ -74,7 +82,9 @@ start.addEventListener('click', (e) => {
 
 clickCookie.addEventListener('click', (e) => {
   if (e.target.id === 'cookie-click') {
-    numCookies += 1
+    numCookies += cpc
+    totalCookies += cpc
+    totalClicks += 1
     cookies.innerText = Math.floor(numCookies)
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
@@ -122,6 +132,18 @@ alex.addEventListener('click', (e) => {
   }
 })
 
+dcvButton.addEventListener('click', (e) => {
+  if (numCookies >= dcvsCost) {
+    cpc *= 2
+    numCookies -= dcvsCost
+    dcvsCost *= 2
+    dcvCost.innerText = `${Math.round(dcvsCost)}`
+    dcvs += 1
+    document.querySelector('#dcv-amount').innerText = dcvs
+  }
+})
+
+
 // convert to HTML
 function highscoreToHTML(highscore) {
   return `<li>${highscore.name}: ${highscore.highscore} cookies</li>`
@@ -140,7 +162,22 @@ function renderHighscores() {
       ol.innerHTML += highscoreToHTML(highscore)
     })
   })
-  document.querySelector('#highscore-list').appendChild(ol)
+  document.querySelector('.col.s12.green.high-score-list').appendChild(ol)
+}
+
+function renderStats() {
+  let helperNumber = 0
+  helperNumber += parseInt(document.querySelector('#ian-amount').innerText)
+  helperNumber += parseInt(document.querySelector('#vicky-amount').innerText)
+  helperNumber += parseInt(document.querySelector('#alex-amount').innerText)
+
+  document.querySelector('#stats-num-cookies').innerText = Math.floor(numCookies)
+  document.querySelector('#stats-total-cookies').innerText = Math.round(totalCookies)
+  document.querySelector('#stats-helper-number').innerText = helperNumber
+  document.querySelector('#c-p-s').innerText = Math.round(cps * 10) / 10
+  document.querySelector('#c-p-c').innerText = cpc
+  document.querySelector('#t-c').innerText = totalClicks
+
 }
 
 // fetches
@@ -219,5 +256,13 @@ let cookieRate = setInterval(function() {
   if (numCookies >= alexsCost) {
     alex.disabled = false
   }
+  if (numCookies < dcvsCost) {
+    dcvButton.disabled = true
+  }
+  if (numCookies >= dcvsCost) {
+    dcvButton.disabled = false
+  }
   numCookies += cps
+  totalCookies += cps
+  renderStats()
   cookies.innerText = Math.floor(numCookies)}, 1000)
