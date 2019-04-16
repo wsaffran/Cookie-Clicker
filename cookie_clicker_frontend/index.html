@@ -20,7 +20,7 @@
   <title>Cookie Clicker</title>
   <script src="src/index.js" defer></script>
 
-  <div class="center-align">
+  <div id="header" class="center-align">
     <div class="card-panel blue darken-1">
       <h3>Cookie Clicker</h3>
     </div>
@@ -31,43 +31,48 @@
 
   <body>
 
-    <div class="row flex">
 
-          <div class="col s3">
-            <ul id="tabs-swipe-demo" class="tabs">
-              <li class="tab col s3"><a href="#test-swipe-1">Info</a></li>
-              <li class="tab col s3"><a class="active" href="#test-swipe-2">Stats</a></li>
-              <li class="tab col s3"><a href="#test-swipe-3">Highscore</a></li>
-            </ul>
-            <div id="test-swipe-1" class="col s12 blue darken-1 info"> <h3>Info</h3> </div>
-            <div id="test-swipe-2" class="col s12 blue darken-1 stats">
-              <h3>Stats</h3>
-              <ul>
-                <li><h6>Cookies in Bank: <span id="stats-num-cookies">0</span></h6></li>
-                <li><h6>Total Cookies Baked: <span id="stats-total-cookies">0</span></h6></li>
-                <li><h6>Number of Helpers: <span id="stats-helper-number">0</span></h6></li>
-                <li><h6>Cookies per Second: <span id="c-p-s">0</span></h6></li>
-                <li><h6>Cookies per Click: <span id="c-p-c">0</span></h6></li>
-                <li><h6>Total Clicks: <span id="t-c">0</span></h6></li>
+
+
+    <div class="body-container">
+
+      <div class="row flex">
+
+            <div class="col s3">
+              <ul id="tabs-swipe-demo" class="tabs">
+                <li class="tab col s3"><a href="#test-swipe-1">Info</a></li>
+                <li class="tab col s3"><a class="active" href="#test-swipe-2">Stats</a></li>
+                <li class="tab col s3"><a href="#test-swipe-3">Highscore</a></li>
               </ul>
+              <div id="test-swipe-1" class="col s12 blue darken-1 info"> <h3>Info</h3> </div>
+              <div id="test-swipe-2" class="col s12 blue darken-1 stats">
+                <h3>Stats</h3>
+                <ul>
+                  <li><h6>Cookies in Bank: <span id="stats-num-cookies">0</span></h6></li>
+                  <li><h6>Total Cookies Baked: <span id="stats-total-cookies">0</span></h6></li>
+                  <li><h6>Number of Helpers: <span id="stats-helper-number">0</span></h6></li>
+                  <li><h6>Cookies per Second: <span id="c-p-s">0</span></h6></li>
+                  <li><h6>Cookies per Click: <span id="c-p-c">0</span></h6></li>
+                  <li><h6>Total Clicks: <span id="t-c">0</span></h6></li>
+                </ul>
+              </div>
+              <div id="test-swipe-3" class="col s12 blue darken-1 high-score-list"><h3>Highscore List</h3></div>
+
             </div>
-            <div id="test-swipe-3" class="col s12 blue darken-1 high-score-list"><h3>Highscore List</h3></div>
 
-          </div>
-
-          <div class="center-align" display: flex; flex-wrap: wrap;>
-            <div class="col s6" style = "background-image: url(../evans.jpg); height: 100%;">
-              <span class="flow-text">
-                <button class="waves-effect waves-light btn blue darken-1" id='start'>START</button>"
-                <h2 class="center-align white" style= "opacity:0.8">Cookie Count: <span style= "opacity:none" id="cookie-count">0</span></h2>
-                <p id="cps"></p>
-                <img id='cookie-click' src="http://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ff.png" width="400px" height="400px">
-                <br>
-              </span>
+            <div class="center-align" display: flex; flex-wrap: wrap;>
+              <div class="col s6" style = "background-image: url(../evans.jpg); height: 100%;">
+                <span class="flow-text">
+                  <button class="waves-effect waves-light btn blue darken-1" id='start'>START</button>"
+                  <h2 class="center-align white" style= "opacity:0.8">Cookie Count: <span style= "opacity:none" id="cookie-count">0</span></h2>
+                  <p id="cps"></p>
+                  <img id='cookie-click' src="http://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ff.png" width="400px" height="400px">
+                  <br>
+                </span>
+              </div>
             </div>
-          </div>
 
-        <div class="center-align">
+          <div class="center-align">
         <div class="col s3">
           <span class="flow-text">Additional Features: <br>
             <button style="width:100%" class="waves-effect waves-light btn blue darken-1" id="ian">(<span id='ian-cost'>20</span>) Ian
@@ -111,22 +116,22 @@
         </div>
         </div>
 
+
+      <h1 id="count-down"></h1>
+
+
+      <div class='form'>
+        <form class="submit-highscore" style="">
+          <h3>Submit</h3>
+
+          <input type="text" name="name" value="" placeholder="username" class="input-text">
+          <br>
+          <input type="submit" name="submit" value="Submit" class="submit">
+        </form>
+        <button id="restart-button">Restart</button>
+      </div>
     </div>
-
-
-  <h1 id="count-down"></h1>
-
-
-  <div class='form'>
-    <form class="submit-highscore" style="">
-      <h3>Submit</h3>
-
-      <input type="text" name="name" value="" placeholder="username" class="input-text">
-      <br>
-      <input type="submit" name="submit" value="Submit" class="submit">
-    </form>
-    <button id="restart-button">Restart</button>
-  </div>
+   </div>
 
 </body>
 </html>

@@ -1,3 +1,6 @@
+
+landingPage()
+
 // DOM elements & variables
 const cookies = document.querySelector('#cookie-count')
 const clickCookie = document.querySelector('#cookie-click')
@@ -289,6 +292,38 @@ function restart() {
 
 }
 
+function startContainer() {
+  return `
+  <div id="start-container" class="valign-wrapper center-align" style="padding-top: 100px;padding-bottom: 400px;background-image:url('http://www.4usky.com/data/out/61/164539208-milk-wallpapers.jpg');background-size: 100% 100%;background-repeat: no-repeat;">
+    <div class="row">
+      <h1 style="color:lightblue;font-size:150px;padding-bottom: 120px">Cookie Clicker</h1>
+      <div class="col s12">
+        <div class="" id="start-page">
+          <div class="col s12">
+            <button class="waves-effect waves-light btn-large blue darken-1 start-button" id="1-min-game" type="button" name="">1 Minute Game</button>
+            <button class="waves-effect waves-light btn-large blue darken-1 start-button" id="classic-game" type="button" name="">Classic Game</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  `
+}
+
+function landingPage() {
+
+  document.querySelector('.body-container').hidden = true
+  document.querySelector('#header').hidden = true
+  document.querySelector('body').innerHTML += startContainer()
+  document.querySelector('#classic-game').addEventListener('click', () => {
+    let a = document.querySelector('#start-container')
+    a.parentNode.removeChild(a)
+    document.querySelector('.body-container').hidden = false
+    document.querySelector('#header').hidden = false
+    // document.querySelector('#start-page').hidden = true
+    // document.querySelector('#start-container').style.display = "none"
+  })
+}
 // start app
 
 renderHighscores()
