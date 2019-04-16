@@ -89,17 +89,17 @@ form.addEventListener('submit', (e) => {
   value.value = ''
 })
 
-start.addEventListener('click', (e) => {
-  timer = setInterval(() => {
-    if (startTime !== 0) {
-      start.innerText = startTime
-      startTime--
-    } else {
-      start.innerText = 'Finished'
-      submitGame()
-    }
-  }, 1000)
-})
+// start.addEventListener('click', (e) => {
+//   timer = setInterval(() => {
+//     if (startTime !== 0) {
+//       start.innerText = startTime
+//       startTime--
+//     } else {
+//       start.innerText = 'Finished'
+//       submitGame()
+//     }
+//   }, 1000)
+// })
 
 clickCookie.addEventListener('click', (e) => {
   if (e.target.id === 'cookie-click') {
@@ -132,7 +132,7 @@ vicky.addEventListener('click', (e) => {
     cps += vickyscps
     vickys += 1
     cookies.innerText = Math.floor(numCookies)
-    vickySpan.innerText = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vickys}`
+    vickySpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vickys}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
 })
@@ -145,7 +145,7 @@ alex.addEventListener('click', (e) => {
     cps += alexscps
     alexs += 1
     cookies.innerText = Math.floor(numCookies)
-    alexSpan.innerText = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${alexs}`
+    alexSpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${alexs}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
 })
