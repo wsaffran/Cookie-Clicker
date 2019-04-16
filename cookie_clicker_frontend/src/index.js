@@ -294,7 +294,7 @@ function restart() {
 
 function startContainer() {
   return `
-  <div id="start-container" class="valign-wrapper center-align" style="padding-top: 100px;padding-bottom: 400px;background-image:url('http://www.4usky.com/data/out/61/164539208-milk-wallpapers.jpg');background-size: 100% 100%;background-repeat: no-repeat;">
+  <div id="start-container" class="valign-wrapper center-align" style="padding-top: 100px;padding-bottom: 400px;background-image:url('../milk.jpg');background-size: 100% 100%;background-repeat: no-repeat;">
     <div class="row">
       <h1 style="color:lightblue;font-size:150px;padding-bottom: 120px">Cookie Clicker</h1>
       <div class="col s12">
