@@ -170,6 +170,7 @@ increaseIanButton.addEventListener('click', (e)=> {
     ianscps *= 1.05
     ianIncrease += 1
     document.querySelector('#increase-ian-amount').innerText = ianIncrease
+    cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
 })
 
@@ -183,6 +184,7 @@ increaseVickyButton.addEventListener('click', (e) => {
     vickyscps *= 1.05
     vickyIncrease += 1
     document.querySelector('#increase-vicky-amount').innerText = vickyIncrease
+    cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
 })
 
@@ -196,6 +198,7 @@ increaseAlexButton.addEventListener('click', (e) => {
     alexscps *= 1.1
     alexIncrease += 1
     document.querySelector('#increase-alex-amount').innerText = alexIncrease
+    cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
 })
 
@@ -351,33 +354,46 @@ let cookieRate = setInterval(function() {
     dcvButton.disabled = false
   }
 
-  if ((parseInt(ianSpan.innerText) === 0) && numCookies < ianIncreaseCost) {
+  if (parseInt(ianSpan.innerText) > 0) {
+    if (numCookies >= ianIncreaseCost) {
+      increaseIanButton.disabled = false
+    }
+    if (numCookies < ianIncreaseCost) {
+      increaseIanButton.disabled = true
+    }
+  }
+
+  if (parseInt(ianSpan.innerText) === 0) {
     increaseIanButton.disabled = true
   }
 
-  if ((parseInt(ianSpan.innerText) !== 0) && numCookies >= ianIncreaseCost) {
-    increaseIanButton.disabled = false
+  if (parseInt(vickySpan.innerText) > 0) {
+    if (numCookies >= vickyIncreaseCost) {
+      increaseVickyButton.disabled = false
+    }
+    if (numCookies < vickyIncreaseCost) {
+      increaseVickyButton.disabled = true
+    }
   }
 
-
-  if ((parseInt(vickySpan.innerText) === 0) && numCookies < vickyIncreaseCost) {
+  if (parseInt(vickySpan.innerText) === 0) {
     increaseVickyButton.disabled = true
   }
 
-  if ((parseInt(vickySpan.innerText) !== 0) && numCookies >= vickyIncreaseCost) {
-    increaseVickyButton.disabled = false
+  if (parseInt(alexSpan.innerText) > 0) {
+    if (numCookies >= alexIncreaseCost) {
+      increaseAlexButton.disabled = false
+    }
+    if (numCookies < alexIncreaseCost) {
+      increaseAlexButton.disabled = true
+    }
   }
 
-
-  if ((parseInt(alexSpan.innerText) === 0) && numCookies < alexIncreaseCost) {
+  if (parseInt(alexSpan.innerText) === 0) {
     increaseAlexButton.disabled = true
   }
 
-  if ((parseInt(alexSpan.innerText) !== 0) && numCookies >= alexIncreaseCost) {
-    increaseAlexButton.disabled = false
-  }
-
-  numCookies += cps
-  totalCookies += cps
+  numCookies += cps/100
+  totalCookies += cps/100
   renderStats()
-  cookies.innerText = Math.floor(numCookies)}, 1000)
+  cookies.innerText = Math.floor(numCookies)}, 10)
