@@ -14,6 +14,15 @@ const alexSpan = document.querySelector('#alex-amount')
 const dcvButton = document.querySelector('#double-click-value')
 const dcvCost = document.querySelector('#dcv-cost')
 
+const increaseIanButton = document.querySelector("#increase-ian-value")
+const increaseIanCost = document.querySelector("#increase-ian-cost")
+
+const increaseVickyButton = document.querySelector("#increase-vicky-value")
+const increaseVickyCost = document.querySelector("#increase-vicky-cost")
+
+const increaseAlexButton = document.querySelector("#increase-alex-value")
+const increaseAlexCost = document.querySelector("#increase-alex-cost")
+
 const restartButton = document.querySelector('#restart-button')
 
 const cpsSpan = document.querySelector('#cps')
@@ -52,6 +61,15 @@ let alexscps = 1
 
 let dcvs = 0
 let dcvsCost = 200
+
+let ianIncrease = 0 
+let ianIncreaseCost = 100
+
+let vickyIncrease = 0
+let vickyIncreaseCost = 100
+
+let alexIncrease = 0
+let alexIncreaseCost = 200
 
 
 
@@ -143,6 +161,44 @@ dcvButton.addEventListener('click', (e) => {
   }
 })
 
+increaseIanButton.addEventListener('click', (e)=> {
+  if (numCookies >= ianIncreaseCost){
+    numCookies -= ianIncreaseCost
+    ianIncreaseCost *= 1.5
+    ianIncreaseCost.innerText = `${Math.round(ianIncreaseCost)}`
+    cps += ianscps
+    ianscps *= 1.3
+    ianIncrease += 1
+    document.querySelector('#increase-ian-amount').innerText = ianIncrease
+  }
+})
+
+
+increaseVickyButton.addEventListener('click', (e) => {
+  if (numCookies >= vickyIncreaseCost) {
+    numCookies -= vickyIncreaseCost
+    vickyIncreaseCost *= 1.5
+    vickyIncreaseCost.innerText = `${Math.round(vickyIncreaseCost)}`
+    cps += vickyscps
+    vickyscps *= 1.3
+    vickyIncrease += 1
+    document.querySelector('#increase-vicky-amount').innerText = vickyIncrease
+  }
+})
+
+
+increaseAlexButton.addEventListener('click', (e) => {
+  if (numCookies >= alexIncreaseCost) {
+    numCookies -= alexIncreaseCost
+    alexIncreaseCost *= 1.5
+    alexIncreaseCost.innerText = `${Math.round(alexIncreaseCost)}`
+    cps += alexscps
+    alexscps *= 1.75
+    alexIncrease += 1
+    document.querySelector('#increase-alex-amount').innerText = alexIncrease
+  }
+})
+
 
 // convert to HTML
 function highscoreToHTML(highscore) {
@@ -162,7 +218,7 @@ function renderHighscores() {
       ol.innerHTML += highscoreToHTML(highscore)
     })
   })
-  document.querySelector('.col.s12.green.high-score-list').appendChild(ol)
+  document.querySelector('.col.s12.blue.darken-1.high-score-list').appendChild(ol)
 }
 
 function renderStats() {
@@ -262,6 +318,33 @@ let cookieRate = setInterval(function() {
   if (numCookies >= dcvsCost) {
     dcvButton.disabled = false
   }
+
+  if ((parseInt(ianSpan.innerText) === 0) && numCookies < ianIncreaseCost) {
+    increaseIanButton.disabled = true
+  }
+
+  if ((parseInt(ianSpan.innerText) !== 0) && numCookies >= ianIncreaseCost) {
+    increaseIanButton.disabled = false
+  }
+
+
+  if ((parseInt(vickySpan.innerText) === 0) && numCookies < vickyIncreaseCost) {
+    increaseVickyButton.disabled = true
+  }
+
+  if ((parseInt(vickySpan.innerText) !== 0) && numCookies >= vickyIncreaseCost) {
+    increaseVickyButton.disabled = false
+  }
+
+
+  if ((parseInt(alexSpan.innerText) === 0) && numCookies < alexIncreaseCost) {
+    increaseAlexButton.disabled = true
+  }
+
+  if ((parseInt(alexSpan.innerText) !== 0) && numCookies >= alexIncreaseCost) {
+    increaseAlexButton.disabled = false
+  }
+
   numCookies += cps
   totalCookies += cps
   renderStats()
