@@ -20,9 +20,9 @@
   <title>Cookie Clicker</title>
   <script src="src/index.js" defer></script>
 
-  <div id="header" class="center-align">
-    <div class="card-panel blue darken-1">
-      <h3>Cookie Clicker</h3>
+  <div id="header" class="center-align valign">
+    <div class="card-panel blue darken-1" style="padding-bottom:0px;margin-bottom:0px">
+      <h3 style="padding-bottom:15px;padding-top:15px;margin-top:0px">Cookie Clicker</h3>
     </div>
   </div>
 
@@ -36,7 +36,7 @@
 
     <div class="body-container">
 
-      <div class="row flex">
+      <div class="row flex" >
 
             <div class="col s3">
               <ul id="tabs-swipe-demo" class="tabs">
@@ -63,7 +63,7 @@
             <div class="center-align" display: flex; flex-wrap: wrap;>
               <div class="col s6" style = "background-image: url(../evans.jpg); height: 100%;">
                 <span class="flow-text">
-                  <button class="waves-effect waves-light btn blue darken-1" id='start'>START</button>"
+                  <button class="waves-effect waves-light btn blue darken-1" id='start'>START</button>
                   <h2 class="center-align white" style= "opacity:0.8">Cookie Count: <span style= "opacity:none" id="cookie-count">0</span></h2>
                   <p id="cps"></p>
                   <img id='cookie-click' src="http://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ff.png" width="400px" height="400px">
@@ -74,44 +74,52 @@
 
           <div class="center-align">
         <div class="col s3">
-          <span class="flow-text">Additional Features: <br>
-            <button style="width:100%" class="waves-effect waves-light btn blue darken-1" id="ian">(<span id='ian-cost'>20</span>) Ian
-              <span id="ian-amount">0</span>
+          <!-- <span class="flow-text">Additional Features: <br> -->
+
+            <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn light-blue darken-4" id="ian">
+              Ian<br>🍪<span id='ian-cost'>20</span>
+              <span style="font-size:40px" id="ian-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</span>
+            </button> <br>
+
+            <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn light-blue darken-4" id="vicky">
+              Vicky<br>🍪<span id='vicky-cost'>20</span>
+              <span style="font-size:40px" id="vicky-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</span>
+            </button> <br>
+
+            <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn light-blue darken-4" id="alex">
+              Alex<br>🍪<span id='alex-cost'>250</span>
+              <span style="font-size:40px" id="alex-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</span>
             </button> <br>
 
 
-            <button style="width:100%" class="waves-effect waves-light btn blue darken-1" id="vicky">(<span id='vicky-cost'>20</span>) Vicky
-              <span id="vicky-amount">0</span>
-            </button> <br>
+            <!-- <button style="width:100%" class="waves-effect waves-light btn blue darken-1" id="finish">pause</button>
+          </span><br><br> -->
 
-            <button style="width:100%" class="waves-effect waves-light btn blue darken-1" id="alex">(<span id='alex-cost'>250</span>) Alex
-              <span id="alex-amount">0</span>
-            </button><br>
-            <button style="width:100%" class="waves-effect waves-light btn blue darken-1" id="finish">pause</button>
-          </span><br><br>
+          <span class="flow-text" style="font-size:20px">Upgrades: <br>
 
-          <span class="flow-text">Upgrades: <br>
-            <button style="font-size:20px;width:100%" class="waves-effect waves-light btn light-blue darken-4" id="double-click-value">(<span id='dcv-cost'>200</span>) Super Clicker
+            <!-- <button style="font-size:20px;width:100%;height:70px;margin-bottom:5px" class="waves-effect waves-light btn light-blue darken-4" id="double-click-value">(<span id='dcv-cost'>200</span>) Super Clicker
               <span id="dcv-amount">0</span>
+            </button> <br> -->
+
+            <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn light-blue darken-4" id="double-click-value">
+              Super Clicker<br>🍪<span id='dcv-cost'>200</span>
+              <span style="font-size:40px" id="dcv-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</span>
             </button> <br>
 
-            <button style="font-size:20px;width:100%" class="waves-effect waves-light btn light-blue darken-4" id="increase-ian-value">(<span id='increase-ian-cost'>100</span>)
-              YeastyBoi++
-              <span id="increase-ian-amount">0</span>
+            <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn light-blue darken-4" id="increase-ian-value">
+              YeastyBoi++<br>🍪<span id='increase-ian-cost'>100</span>
+              <span style="font-size:40px" id="increase-ian-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</span>
             </button> <br>
 
-            <button style="font-size:20px;width:100%" class="waves-effect waves-light btn light-blue darken-4"
-              id="increase-vicky-value">(<span id='increase-vicky-cost'>100</span>)
-              IckyVicky++
-              <span id="increase-vicky-amount">0</span>
+            <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn light-blue darken-4" id="increase-vicky-value">
+              IckyVicky++<br>🍪<span id='increase-vicky-cost'>100</span>
+              <span style="font-size:40px" id="increase-vicky-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</span>
             </button> <br>
 
-            <button style="font-size:20px;width:100%" class="waves-effect waves-light btn light-blue darken-4"
-              id="increase-alex-value">(<span id='increase-alex-cost'>200</span>)
-              Give Alex a RedBull
-              <span id="increase-alex-amount">0</span>
+            <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn light-blue darken-4" id="increase-alex-value">
+              Give Alex A RedBull<br>🍪<span id='increase-alex-cost'>200</span>
+              <span style="font-size:40px" id="increase-alex-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</span>
             </button> <br>
-
 
         </div>
         </div>
