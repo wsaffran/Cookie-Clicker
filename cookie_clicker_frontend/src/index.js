@@ -460,7 +460,7 @@ function landingPage() {
   
   document.querySelector("#custom-game").addEventListener('click', ()=> {
     document.querySelector('#custom-form').hidden = false
-  } )
+    document.querySelector("#start").remove()
 
   
   document.querySelector('#custom-form').addEventListener(
@@ -469,7 +469,6 @@ function landingPage() {
       
       const baker1Name = document.querySelector("#baker1Name").value
       const baker1Img = document.querySelector("#baker1Img").value
-      const newDiv = document.createElement("div")
       const newButton = document.createElement("div")
       newButton.innerHTML = `
         <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn light-blue darken-4" id="newButton">
@@ -517,6 +516,7 @@ function landingPage() {
         `
       }
     })
+  })
   })
   
   
