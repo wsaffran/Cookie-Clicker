@@ -36,6 +36,8 @@ const form = document.querySelector('.form-popup')
 
 const countDown = document.querySelector('#count-down-time')
 
+let helperNumber = 0
+
 let newBakerButton
 let newButtonCost = 10
 let newButtoncps = .05
@@ -348,7 +350,21 @@ function renderHighscores() {
 }
 
 function renderStats() {
-  let helperNumber = 0
+  helperNumber += parseInt(document.querySelector('#ian-amount').innerText)
+  helperNumber += parseInt(document.querySelector('#vicky-amount').innerText)
+  helperNumber += parseInt(document.querySelector('#alex-amount').innerText)
+  // helperNumber += parseInt(document.querySelector('#newButton-amount').innerText)
+
+  document.querySelector('#stats-num-cookies').innerText = Math.floor(numCookies)
+  document.querySelector('#stats-total-cookies').innerText = Math.round(totalCookies)
+  document.querySelector('#stats-helper-number').innerText = helperNumber
+  document.querySelector('#c-p-s').innerText = Math.round(cps * 10) / 10
+  document.querySelector('#c-p-c').innerText = cpc
+  document.querySelector('#t-c').innerText = totalClicks
+
+}
+
+function renderStatsNew() {
   helperNumber += parseInt(document.querySelector('#ian-amount').innerText)
   helperNumber += parseInt(document.querySelector('#vicky-amount').innerText)
   helperNumber += parseInt(document.querySelector('#alex-amount').innerText)
@@ -421,7 +437,7 @@ function startContainer() {
   return `
   <div id="start-container" class="valign-wrapper center-align" style="padding-top: 100px;padding-bottom: 400px;background-image:url('../milk.jpg');background-size: 100% 100%;background-repeat: no-repeat;">
     <div class="row">
-      <h1 style="color:lightblue;font-size:150px;padding-bottom: 120px">Cookie Clicker</h1>
+      <h1 style="color: rgb(29, 136, 229);font-size:200px;padding-bottom: 120px">Cookie Clicker</h1>
       <div class="col s12">
         <div class="" id="start-page">
           <div class="col s12">
@@ -517,7 +533,7 @@ function landingPage() {
         </button>
         `
         cpsSpan.innerHTML = `${Math.round(cps * 10) / 10} cookies per second`
-
+        renderStatsNew()
 
         const newDiv = document.createElement("div")
         const appendNewBaker = document.querySelector("#test-swipe-1").lastElementChild
