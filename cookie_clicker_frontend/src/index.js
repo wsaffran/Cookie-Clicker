@@ -36,6 +36,11 @@ const form = document.querySelector('.form-popup')
 
 const countDown = document.querySelector('#count-down-time')
 
+let newBakerButton 
+let newButtonCost = 10 
+let newButtoncps = .05
+let newButtonAmount = 0
+
 let timer
 
 // DOM setup
@@ -336,6 +341,7 @@ function renderStats() {
   helperNumber += parseInt(document.querySelector('#ian-amount').innerText)
   helperNumber += parseInt(document.querySelector('#vicky-amount').innerText)
   helperNumber += parseInt(document.querySelector('#alex-amount').innerText)
+  helperNumber += parseInt(document.querySelector('#newButton-amount').innerText)
 
   document.querySelector('#stats-num-cookies').innerText = Math.floor(numCookies)
   document.querySelector('#stats-total-cookies').innerText = Math.round(totalCookies)
@@ -410,11 +416,27 @@ function startContainer() {
           <div class="col s12">
             <button class="waves-effect waves-light btn-large blue darken-1 start-button" id="one-min-game" type="button" name="">1 Minute Game</button>
             <button class="waves-effect waves-light btn-large blue darken-1 start-button" id="classic-game" type="button" name="">Classic Game</button>
+            <button class="waves-effect waves-light btn-large blue darken-1 start-button" id="custom-game" type="button" name="">Custom Game</button>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+  
+      <div class="container" id="custom-form">
+        <form class="edit-bakers" style="">
 
+          <h3 style="color:white">Add New Bakers!</h3>
+            <div class="col s6">
+              <input id="baker1Name" type="text" name="name" value="" placeholder="Enter a baker's name..." class="input-text style="color:black">
+            </div>
+
+            <div class="col s6">
+              <input id="baker1Img" type="text" name="image" value="" placeholder="Enter your baker's image URL..." class="input-text" style="color:white">
+            </div>
+
+          <input id ="submitBaker" class="waves-effect waves-light btn-large blue darken-1 submit" type="submit" name="submit" value="Start Game">
+        </form>
+      </div>
+  </div>
   `
 }
 
@@ -423,6 +445,7 @@ function landingPage() {
   document.querySelector('.body-container').hidden = true
   document.querySelector('#header').hidden = true
   document.querySelector('body').innerHTML += startContainer()
+  document.querySelector('#custom-form').hidden = true
 
   document.querySelector('#classic-game').addEventListener('click', () => {
     let a = document.querySelector('#start-container')
@@ -432,7 +455,71 @@ function landingPage() {
     start.remove()
     // document.querySelector('#start-page').hidden = true
     // document.querySelector('#start-container').style.display = "none"
+
   })
+  
+  document.querySelector("#custom-game").addEventListener('click', ()=> {
+    document.querySelector('#custom-form').hidden = false
+  } )
+
+  
+  document.querySelector('#custom-form').addEventListener(
+    'submit', (e) => {
+      e.preventDefault() 
+      
+      const baker1Name = document.querySelector("#baker1Name").value
+      const baker1Img = document.querySelector("#baker1Img").value
+      const newDiv = document.createElement("div")
+      const newButton = document.createElement("div")
+      newButton.innerHTML = `
+        <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn light-blue darken-4" id="newButton">
+          ${baker1Name} <br>🍪<span id='newButton-cost'>10</span>
+          <span style="font-size:40px" id="newButton-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</span>
+        </button>
+        `
+
+      const appendButtonToTop = document.querySelector("#test")
+      newBakerButton = document.querySelector("#newButton")
+      
+      appendButtonToTop.insertBefore(newButton, appendButtonToTop.firstElementChild)
+
+      let a = document.querySelector('#start-container')
+      a.parentNode.removeChild(a)
+      document.querySelector('.body-container').hidden = false
+      document.querySelector('#header').hidden = false
+
+    
+    const body = document.querySelector("body")
+
+    
+    body.addEventListener('click', (e) => {
+      if (e.target.id === 'newButton' && numCookies >= newButtonCost) {
+        numCookies -= newButtonCost
+        newButtonCost *= 1.15
+        document.querySelector('#newButton-cost').innerText = `${Math.round(newButtonCost)}`
+        cps += newButtoncps
+        newButtonAmount += 1
+        cookies.innerText = Math.floor(numCookies)
+        newButton.innerHTML = `
+        <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn light-blue darken-4" id="newButton">
+        ${baker1Name} <br>🍪<span id='newButton-cost'>${Math.round(newButtonCost)}</span>
+        <span style="font-size:40px" id="newButton-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${newButtonAmount}</span>
+        </button>
+        `
+        cpsSpan.innerHTML = `${Math.round(cps * 10) / 10} cookies per second`
+  
+  
+        const newDiv = document.createElement("div")
+        const appendNewBaker = document.querySelector("#test-swipe-1").lastElementChild
+        appendNewBaker.appendChild(newDiv)
+        newDiv.innerHTML += `
+          <img src="${baker1Img}" width="70px" height="70px" alt="" class="circle responsive-img">
+        `
+      }
+    })
+  })
+  
+  
   document.querySelector('#one-min-game').addEventListener('click', () => {
     startTime = 61
     let a = document.querySelector('#start-container')
@@ -443,7 +530,11 @@ function landingPage() {
     // <button class="waves-effect waves-light btn blue darken-1" id='start'>START</button>
     // `
   })
+
 }
+    
+
+
 // start app
 
 renderHighscores()
@@ -512,6 +603,19 @@ let cookieRate = setInterval(function() {
   if (parseInt(alexSpan.innerText) === 0) {
     increaseAlexButton.disabled = true
   }
+
+  if (document.querySelector("#newButton")) {
+    console.log(newButtonCost)
+    if (numCookies < newButtonCost) {
+      document.querySelector("#newButton").disabled = true
+    }
+    if (numCookies >= newButtonCost) {
+      document.querySelector("#newButton").disabled = false
+    }
+  }
+
+ 
+  
 
   numCookies += cps/100
   totalCookies += cps/100
