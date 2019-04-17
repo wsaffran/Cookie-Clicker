@@ -36,7 +36,6 @@ const form = document.querySelector('.form-popup')
 
 const countDown = document.querySelector('#count-down-time')
 
-let helperNumber = 0
 
 let newBakerButton
 let newButtonCost = 10
@@ -350,6 +349,7 @@ function renderHighscores() {
 }
 
 function renderStats() {
+  let helperNumber = 0
   helperNumber += parseInt(document.querySelector('#ian-amount').innerText)
   helperNumber += parseInt(document.querySelector('#vicky-amount').innerText)
   helperNumber += parseInt(document.querySelector('#alex-amount').innerText)
