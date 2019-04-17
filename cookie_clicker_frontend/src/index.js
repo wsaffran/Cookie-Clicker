@@ -32,7 +32,9 @@ const cpsSpan = document.querySelector('#cps')
 
 const start = document.querySelector('#start')
 
-const form = document.querySelector('.form')
+const form = document.querySelector('.form-popup')
+
+const countDown = document.querySelector('#count-down-time')
 
 let timer
 
@@ -41,7 +43,7 @@ form.style.display = 'none'
 cpsSpan.innerText = '0 cookies per second'
 
 // Timer
-let startTime = 60
+let startTime
 
 // Application State
 let totalClicks = 0
@@ -74,8 +76,6 @@ let vickyIncreaseCost = 100
 let alexIncrease = 0
 let alexIncreaseCost = 200
 
-
-
 // event listeners
 restartButton.addEventListener('click', restart)
 
@@ -86,23 +86,121 @@ form.addEventListener('submit', (e) => {
   let highscore = parseInt(numCookies)
   body = {name, highscore}
   fetchSubmitForm(body)
+  .then(json => {
+    document.querySelector('.col.s12.blue.darken-1.high-score-list').innerHTML = ''
+    renderHighscores()
+    form.hidden = true
+    countDown.innerText = ""
+    restartButton.hidden = false
+    restartButton.innerText = 'Play Again?'
+    fetchHighscores().then(json => {
+      let sortedList = json.sort(function(a, b) {
+        return a.highscore - b.highscore
+      })
+      let counter = 1
+      sortedList.reverse().forEach(highscore => {
+        counter++
+        if (json.length == highscore.id) {
+          alert(`You scored ${highscore.highscore}! You are #${counter} out of ${sortedList.length} players`)
+        }
+      })
+    })
+  })
   value.value = ''
 })
 
-// start.addEventListener('click', (e) => {
-//   timer = setInterval(() => {
-//     if (startTime !== 0) {
-//       start.innerText = startTime
-//       startTime--
-//     } else {
-//       start.innerText = 'Finished'
-//       submitGame()
-//     }
-//   }, 1000)
-// })
+start.addEventListener('click', (e) => {
+  start.remove()
+  restartButton.hidden = true
+  console.log("started");
+
+  let cookieRate = setInterval(function() {
+    if (numCookies < iansCost) {
+      ian.disabled = true
+    }
+    if (numCookies >= iansCost) {
+      ian.disabled = false
+    }
+    if (numCookies < vickysCost) {
+      vicky.disabled = true
+    }
+    if (numCookies >= vickysCost) {
+      vicky.disabled = false
+    }
+    if (numCookies < alexsCost) {
+      alex.disabled = true
+    }
+    if (numCookies >= alexsCost) {
+      alex.disabled = false
+    }
+    if (numCookies < dcvsCost) {
+      dcvButton.disabled = true
+    }
+    if (numCookies >= dcvsCost) {
+      dcvButton.disabled = false
+    }
+
+    if (parseInt(ianSpan.innerText) > 0) {
+      if (numCookies >= ianIncreaseCost) {
+        increaseIanButton.disabled = false
+      }
+      if (numCookies < ianIncreaseCost) {
+        increaseIanButton.disabled = true
+      }
+    }
+
+    if (parseInt(ianSpan.innerText) === 0) {
+      increaseIanButton.disabled = true
+    }
+
+    if (parseInt(vickySpan.innerText) > 0) {
+      if (numCookies >= vickyIncreaseCost) {
+        increaseVickyButton.disabled = false
+      }
+      if (numCookies < vickyIncreaseCost) {
+        increaseVickyButton.disabled = true
+      }
+    }
+
+    if (parseInt(vickySpan.innerText) === 0) {
+      increaseVickyButton.disabled = true
+    }
+
+    if (parseInt(alexSpan.innerText) > 0) {
+      if (numCookies >= alexIncreaseCost) {
+        increaseAlexButton.disabled = false
+      }
+      if (numCookies < alexIncreaseCost) {
+        increaseAlexButton.disabled = true
+      }
+    }
+
+    if (parseInt(alexSpan.innerText) === 0) {
+      increaseAlexButton.disabled = true
+    }
+
+    numCookies += cps/100
+    totalCookies += cps/100
+    renderStats()
+    cookies.innerText = Math.floor(numCookies)}, 10)
+
+
+  timer = setInterval(() => {
+    console.log(startTime);
+    if (startTime !== 0) {
+      startTime--
+      countDown.innerText = startTime
+    } else {
+      countDown.innerText = "Finished!"
+      cookieRate = clearInterval(cookieRate);
+      submitGame()
+    }
+
+  }, 1000)
+})
 
 clickCookie.addEventListener('click', (e) => {
-  if (e.target.id === 'cookie-click') {
+  if (e.target.id === 'cookie-click' && startTime != 0 && startTime != 61) {
     numCookies += cpc
     totalCookies += cpc
     totalClicks += 1
@@ -184,7 +282,6 @@ increaseIanButton.addEventListener('click', (e)=> {
   }
 })
 
-
 increaseVickyButton.addEventListener('click', (e) => {
   if (numCookies >= vickyIncreaseCost) {
     numCookies -= vickyIncreaseCost
@@ -199,7 +296,6 @@ increaseVickyButton.addEventListener('click', (e) => {
   }
 })
 
-
 increaseAlexButton.addEventListener('click', (e) => {
   if (numCookies >= alexIncreaseCost) {
     numCookies -= alexIncreaseCost
@@ -213,7 +309,6 @@ increaseAlexButton.addEventListener('click', (e) => {
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
 })
-
 
 // convert to HTML
 function highscoreToHTML(highscore) {
@@ -270,6 +365,7 @@ function fetchSubmitForm(body) {
 }
 // functions
 function submitGame() {
+  timer = clearInterval(timer)
   cookieRate = clearInterval(cookieRate);
   document.querySelectorAll('button').forEach(button => {
     if (button.id !== 'restart-button') {
@@ -312,7 +408,7 @@ function startContainer() {
       <div class="col s12">
         <div class="" id="start-page">
           <div class="col s12">
-            <button class="waves-effect waves-light btn-large blue darken-1 start-button" id="1-min-game" type="button" name="">1 Minute Game</button>
+            <button class="waves-effect waves-light btn-large blue darken-1 start-button" id="one-min-game" type="button" name="">1 Minute Game</button>
             <button class="waves-effect waves-light btn-large blue darken-1 start-button" id="classic-game" type="button" name="">Classic Game</button>
         </div>
       </div>
@@ -327,13 +423,25 @@ function landingPage() {
   document.querySelector('.body-container').hidden = true
   document.querySelector('#header').hidden = true
   document.querySelector('body').innerHTML += startContainer()
+
   document.querySelector('#classic-game').addEventListener('click', () => {
     let a = document.querySelector('#start-container')
     a.parentNode.removeChild(a)
     document.querySelector('.body-container').hidden = false
     document.querySelector('#header').hidden = false
+    start.remove()
     // document.querySelector('#start-page').hidden = true
     // document.querySelector('#start-container').style.display = "none"
+  })
+  document.querySelector('#one-min-game').addEventListener('click', () => {
+    startTime = 61
+    let a = document.querySelector('#start-container')
+    a.parentNode.removeChild(a)
+    document.querySelector('.body-container').hidden = false
+    document.querySelector('#header').hidden = false
+    // document.querySelector(".container").innerHTML += `
+    // <button class="waves-effect waves-light btn blue darken-1" id='start'>START</button>
+    // `
   })
 }
 // start app
