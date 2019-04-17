@@ -93,6 +93,18 @@ form.addEventListener('submit', (e) => {
     countDown.innerText = ""
     restartButton.hidden = false
     restartButton.innerText = 'Play Again?'
+    fetchHighscores().then(json => {
+      let sortedList = json.sort(function(a, b) {
+        return a.highscore - b.highscore
+      })
+      let counter = 1
+      sortedList.reverse().forEach(highscore => {
+        counter++
+        if (json.length == highscore.id) {
+          alert(`You scored ${highscore.highscore}! You are #${counter} out of ${sortedList.length} players`)
+        }
+      })
+    })
   })
   value.value = ''
 })
