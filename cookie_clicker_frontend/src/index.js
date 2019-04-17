@@ -121,6 +121,9 @@ ian.addEventListener('click', (e) => {
     cookies.innerText = Math.floor(numCookies)
     ianSpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ians}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
+    document.querySelector("#addIan").innerHTML += `
+    <img src="../ian.jpg" width="70px" height="70px" alt="" class="circle responsive-img">
+    `
   }
 })
 
@@ -134,6 +137,9 @@ vicky.addEventListener('click', (e) => {
     cookies.innerText = Math.floor(numCookies)
     vickySpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vickys}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
+    document.querySelector("#addVicky").innerHTML += `
+    <img src="../vicky.jpg" width="70px" height="70px" alt="" class="circle responsive-img">
+    `
   }
 })
 
@@ -147,6 +153,9 @@ alex.addEventListener('click', (e) => {
     cookies.innerText = Math.floor(numCookies)
     alexSpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${alexs}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
+    document.querySelector("#addAlex").innerHTML += `
+    <img src="https://avatars1.githubusercontent.com/u/12286943?s=460&v=4" width="70px" height="70px" alt="" class="circle responsive-img">
+    `
   }
 })
 

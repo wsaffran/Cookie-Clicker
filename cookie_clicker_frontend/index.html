@@ -21,18 +21,15 @@
   <script src="src/index.js" defer></script>
 
   <div id="header" class="center-align valign">
-    <div class="card-panel blue darken-1" style="padding-bottom:0px;margin-bottom:0px">
-      <h3 style="padding-bottom:15px;padding-top:15px;margin-top:0px">Cookie Clicker</h3>
+    <div style= "background-image:url(https://data.whicdn.com/images/132110815/original.jpg)" class="card-panel blue darken-1" style="padding-bottom:0px;margin-bottom:0px">
+      <h2 style="padding-bottom:15px;padding-top:15px;margin-top:0px; color:white; text-shadow: -1px 0 black, 0 1px black, 4px 0 black, 0 -1px black" >Cookie Clicker</h2>
     </div>
   </div>
 
 </head>
 
 
-  <body>
-
-
-
+  <body style= "background-color:rgb(75, 123, 138)" >
 
     <div class="body-container">
 
@@ -40,11 +37,25 @@
 
             <div class="col s3">
               <ul id="tabs-swipe-demo" class="tabs">
-                <li class="tab col s3"><a href="#test-swipe-1">Info</a></li>
-                <li class="tab col s3"><a class="active" href="#test-swipe-2">Stats</a></li>
-                <li class="tab col s3"><a href="#test-swipe-3">Highscore</a></li>
+                <li class="tab col s3"><a  class= "blue-text" href="#test-swipe-1">Info</a></li>
+                <li class="tab col s3"><a class="active blue-text" href="#test-swipe-2">Stats</a></li>
+                <li class="tab col s3"><a class= "blue-text" href="#test-swipe-3">Highscore</a></li>
               </ul>
-              <div id="test-swipe-1" class="col s12 blue darken-1 info"> <h3>Info</h3> </div>
+              <div id="test-swipe-1" style="background-color: rgb(75, 123, 138)" class="col s12 info"> 
+                <h3>Info</h3> 
+                  <div style= "background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjvlW9y8hoEOQl9NH8Pzn3UQy7Axd5IhgmfCVlXnspWZslbhPh)" class="row" id="addIan">
+                    <p>Ian Count:</p> 
+                  </div>
+                  <div class="row" id="addVicky">
+                    <p>Vicki Count:</p>
+                  </div>
+                  <div class="row" id="addAlex">
+                    <p>Alex Count:</p>
+                  </div>
+
+              </div>
+
+
               <div id="test-swipe-2" class="col s12 blue darken-1 stats">
                 <h3>Stats</h3>
                 <ul>
@@ -61,7 +72,7 @@
             </div>
 
             <div class="center-align" display: flex; flex-wrap: wrap;>
-              <div class="col s6" style = "background-image: url(../evans.jpg); height: 100%;">
+              <div class="col s6 circle responsive-img" style = "background-image: url(../evanss2.png); height: 760px;filter: drop-shadow(20px 20px 20px #222222)">
                 <span class="flow-text">
                   <!-- <button class="waves-effect waves-light btn blue darken-1" id='start'>START</button> -->
                   <h2 class="center-align white" style= "opacity:0.8">Cookie Count: <span style= "opacity:none" id="cookie-count">0</span></h2>
