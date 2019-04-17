@@ -92,7 +92,7 @@ form.addEventListener('submit', (e) => {
   body = {name, highscore}
   fetchSubmitForm(body)
   .then(json => {
-    document.querySelector('.col.s12.blue.darken-1.high-score-list').innerHTML = ''
+    document.querySelector('.col.s12.white.high-score-list').innerHTML = ''
     renderHighscores()
     form.hidden = true
     countDown.innerText = ""
@@ -344,7 +344,7 @@ function renderHighscores() {
       ol.innerHTML += highscoreToHTML(highscore)
     })
   })
-  document.querySelector('.col.s12.blue.darken-1.high-score-list').appendChild(ol)
+  document.querySelector('.col.s12.white.high-score-list').appendChild(ol)
 }
 
 function renderStats() {
