@@ -36,8 +36,8 @@ const form = document.querySelector('.form-popup')
 
 const countDown = document.querySelector('#count-down-time')
 
-let newBakerButton 
-let newButtonCost = 10 
+let newBakerButton
+let newButtonCost = 10
 let newButtoncps = .05
 let newButtonAmount = 0
 
@@ -66,8 +66,8 @@ let vickysCost = 20
 let vickyscps = .1
 
 let alexs = 0
-let alexsCost = 250
-let alexscps = 1
+let alexsCost = 100
+let alexscps = .5
 
 let dcvs = 0
 let dcvsCost = 200
@@ -279,7 +279,7 @@ increaseIanButton.addEventListener('click', (e)=> {
     ianIncreaseCost *= 1.5
     document.querySelector("#increase-ian-cost").innerText = `${Math.round(ianIncreaseCost)}`
     cps -= ianscps*ians
-    ianscps *= 1.25
+    ianscps *= 1.5
     cps += ianscps*ians
     ianIncrease += 1
     document.querySelector('#increase-ian-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ianIncrease}`
@@ -293,7 +293,7 @@ increaseVickyButton.addEventListener('click', (e) => {
     vickyIncreaseCost *= 1.5
     document.querySelector("#increase-vicky-cost").innerText = `${Math.round(vickyIncreaseCost)}`
     cps -= vickyscps*vickys
-    vickyscps *= 1.25
+    vickyscps *= 1.5
     cps += vickyscps*vickys
     vickyIncrease += 1
     document.querySelector('#increase-vicky-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vickyIncrease}`
@@ -307,7 +307,7 @@ increaseAlexButton.addEventListener('click', (e) => {
     alexIncreaseCost *= 1.5
     document.querySelector("#increase-alex-cost").innerText = `${Math.round(alexIncreaseCost)}`
     cps -= alexscps*alexs
-    alexscps *= 1.25
+    alexscps *= 1.75
     cps += alexscps*alexs
     alexIncrease += 1
     document.querySelector('#increase-alex-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${alexIncrease}`
@@ -420,7 +420,7 @@ function startContainer() {
           </div>
         </div>
       </div>
-  
+
       <div class="container" id="custom-form">
         <form class="edit-bakers" style="">
 
@@ -457,16 +457,16 @@ function landingPage() {
     // document.querySelector('#start-container').style.display = "none"
 
   })
-  
+
   document.querySelector("#custom-game").addEventListener('click', ()=> {
     document.querySelector('#custom-form').hidden = false
     document.querySelector("#start").remove()
 
-  
+
   document.querySelector('#custom-form').addEventListener(
     'submit', (e) => {
-      e.preventDefault() 
-      
+      e.preventDefault()
+
       const baker1Name = document.querySelector("#baker1Name").value
       const baker1Img = document.querySelector("#baker1Img").value
       const newButton = document.createElement("div")
@@ -479,7 +479,7 @@ function landingPage() {
 
       const appendButtonToTop = document.querySelector("#test")
       newBakerButton = document.querySelector("#newButton")
-      
+
       appendButtonToTop.insertBefore(newButton, appendButtonToTop.firstElementChild)
 
       let a = document.querySelector('#start-container')
@@ -487,10 +487,10 @@ function landingPage() {
       document.querySelector('.body-container').hidden = false
       document.querySelector('#header').hidden = false
 
-    
+
     const body = document.querySelector("body")
 
-    
+
     body.addEventListener('click', (e) => {
       if (e.target.id === 'newButton' && numCookies >= newButtonCost) {
         numCookies -= newButtonCost
@@ -506,8 +506,8 @@ function landingPage() {
         </button>
         `
         cpsSpan.innerHTML = `${Math.round(cps * 10) / 10} cookies per second`
-  
-  
+
+
         const newDiv = document.createElement("div")
         const appendNewBaker = document.querySelector("#test-swipe-1").lastElementChild
         appendNewBaker.appendChild(newDiv)
@@ -518,8 +518,8 @@ function landingPage() {
     })
   })
   })
-  
-  
+
+
   document.querySelector('#one-min-game').addEventListener('click', () => {
     startTime = 61
     let a = document.querySelector('#start-container')
@@ -532,7 +532,7 @@ function landingPage() {
   })
 
 }
-    
+
 
 
 // start app
@@ -614,8 +614,8 @@ let cookieRate = setInterval(function() {
     }
   }
 
- 
-  
+
+
 
   numCookies += cps/100
   totalCookies += cps/100
