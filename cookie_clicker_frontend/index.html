@@ -19,6 +19,40 @@
   <link rel="stylesheet" href="src/index.css">
   <title>Cookie Clicker</title>
   <script src="src/index.js" defer></script>
+  <style media="screen">
+  .container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    }
+
+    .container img {
+    width: 100%;
+    height: auto;
+    }
+
+    .container .waves-effect.waves-light.btn.blue.darken-1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 24px;
+    padding: 12px 24px;
+    border: none;
+    line-height: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    }
+
+    .container .waves-effect.waves-light.btn.blue.darken-1:hover {
+    background-color: black;
+    }
+  </style>
 
   <div id="header" class="center-align valign">
     <div style= "background-image:url(https://data.whicdn.com/images/132110815/original.jpg)" class="card-panel blue darken-1" style="padding-bottom:0px;margin-bottom:0px">
@@ -41,10 +75,10 @@
                 <li class="tab col s3"><a class="active blue-text" href="#test-swipe-2">Stats</a></li>
                 <li class="tab col s3"><a class= "blue-text" href="#test-swipe-3">Highscore</a></li>
               </ul>
-              <div id="test-swipe-1" style="background-color: rgb(75, 123, 138)" class="col s12 info"> 
-                <h3>Info</h3> 
+              <div id="test-swipe-1" style="background-color: rgb(75, 123, 138)" class="col s12 info">
+                <h3>Info</h3>
                   <div style= "background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjvlW9y8hoEOQl9NH8Pzn3UQy7Axd5IhgmfCVlXnspWZslbhPh)" class="row" id="addIan">
-                    <p>Ian Count:</p> 
+                    <p>Ian Count:</p>
                   </div>
                   <div class="row" id="addVicky">
                     <p>Vicki Count:</p>
@@ -74,10 +108,25 @@
             <div class="center-align" display: flex; flex-wrap: wrap;>
               <div class="col s6 circle responsive-img" style = "background-image: url(../evanss2.png); height: 760px;filter: drop-shadow(20px 20px 20px #222222)">
                 <span class="flow-text">
-                  <!-- <button class="waves-effect waves-light btn blue darken-1" id='start'>START</button> -->
                   <h2 class="center-align white" style= "opacity:0.8">Cookie Count: <span style= "opacity:none" id="cookie-count">0</span></h2>
                   <p id="cps"></p>
-                  <img id='cookie-click' src="http://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ff.png" width="400px" height="400px">
+                  <div class="container">
+                    <img id='cookie-click' src="http://www.stickpng.com/assets/images/580b57fbd9996e24bc43c0ff.png" width="400px" height="400px">
+                    <button class="waves-effect waves-light btn blue darken-1" id='start'>START</button>
+                    <!-- <button style="width:50%" class="waves-effect waves-light btn blue darken-1" id="finish">Start</button> -->
+                    <span id="count-down-time" style="font-weight:900;font-size:75px"></span>
+                    <div class='form-popup'>
+                      <form class="submit-highscore" style="">
+                        <h3>Submit</h3>
+
+                        <input type="text" name="name" value="" placeholder="username" class="input-text">
+                        <br>
+                        <input type="submit" name="submit" value="Submit" class="submit">
+                      </form>
+                    </div>
+                    <button id="restart-button" value="Refresh Page" onClick="window.location.reload()">Back</button>
+
+                  </div>
                   <br>
                 </span>
               </div>
@@ -101,10 +150,6 @@
               Alex<br>🍪<span id='alex-cost'>250</span>
               <span style="font-size:40px" id="alex-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</span>
             </button> <br>
-
-
-            <!-- <button style="width:100%" class="waves-effect waves-light btn blue darken-1" id="finish">pause</button>
-          </span><br><br> -->
 
           <span class="flow-text" style="font-size:20px">Upgrades: <br>
 
@@ -139,7 +184,7 @@
       <h1 id="count-down"></h1>
 
 
-      <div class='form'>
+      <!-- <div class='form-popup'>
         <form class="submit-highscore" style="">
           <h3>Submit</h3>
 
@@ -148,7 +193,7 @@
           <input type="submit" name="submit" value="Submit" class="submit">
         </form>
         <button id="restart-button">Restart</button>
-      </div>
+      </div> -->
     </div>
    </div>
 
