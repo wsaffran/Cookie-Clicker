@@ -315,6 +315,17 @@ increaseAlexButton.addEventListener('click', (e) => {
   }
 })
 
+
+// const test = document.querySelector(".testing1")
+ian.onmouseover = function () {
+  document.getElementById('popup').style.display = 'block';
+}
+ian.onmouseout = function () {
+  document.getElementById('popup').style.display = 'none';
+}
+
+
+
 // convert to HTML
 function highscoreToHTML(highscore) {
   return `<li>${highscore.name}: ${highscore.highscore} cookies</li>`
@@ -619,5 +630,5 @@ let cookieRate = setInterval(function() {
 
   numCookies += cps/100
   totalCookies += cps/100
-  renderStats()
-  cookies.innerText = Math.floor(numCookies)}, 10)
+  cookies.innerText = Math.floor(numCookies)
+  renderStats()}, 10)
