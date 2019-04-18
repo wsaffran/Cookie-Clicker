@@ -56,7 +56,7 @@ let totalClicks = 0
 let totalCookies = 0
 let numCookies = 0
 let cps = 0
-let cpc = 1000
+let cpc = 100000
 
 let ians = 0
 let iansCost = 20
@@ -91,6 +91,8 @@ let vickyIncreaseCost = 100
 
 let alexIncrease = 0
 let alexIncreaseCost = 200
+
+let showNumCookies = "0"
 
 // event listeners
 restartButton.addEventListener('click', restart)
@@ -376,8 +378,24 @@ function renderStats() {
   helperNumber += parseInt(document.querySelector('#alex-amount').innerText)
   // helperNumber += parseInt(document.querySelector('#newButton-amount').innerText)
 
-  document.querySelector('#stats-num-cookies').innerText = Math.floor(numCookies)
-  document.querySelector('#stats-total-cookies').innerText = Math.round(totalCookies)
+  showNumCookies = Math.floor(numCookies).toString()
+  if (showNumCookies.length > 3) {
+    showNumCookies = showNumCookies.slice(0, showNumCookies.length - 3) + "," + showNumCookies.slice(showNumCookies.length - 3)
+  }
+  if (showNumCookies.length > 7) {
+    showNumCookies = showNumCookies.slice(0, showNumCookies.length - 7) + "," + showNumCookies.slice(showNumCookies.length - 7)
+  }
+
+  numTotalCookies = Math.floor(totalCookies).toString()
+  if (numTotalCookies.length > 3) {
+    numTotalCookies = numTotalCookies.slice(0, numTotalCookies.length - 3) + "," + numTotalCookies.slice(numTotalCookies.length - 3)
+  }
+  if (numTotalCookies.length > 7) {
+    numTotalCookies = numTotalCookies.slice(0, numTotalCookies.length - 7) + "," + numTotalCookies.slice(numTotalCookies.length - 7)
+  }
+
+  document.querySelector('#stats-num-cookies').innerText = showNumCookies
+  document.querySelector('#stats-total-cookies').innerText = numTotalCookies
   document.querySelector('#stats-helper-number').innerText = helperNumber
   document.querySelector('#c-p-s').innerText = Math.round(cps * 10) / 10
   document.querySelector('#c-p-c').innerText = cpc
@@ -776,5 +794,15 @@ let cookieRate = setInterval(function() {
 
   numCookies += cps/100
   totalCookies += cps/100
-  cookies.innerText = Math.floor(numCookies)
+
+  showNumCookies = Math.floor(numCookies).toString()
+  if (showNumCookies.length > 3) {
+    showNumCookies = showNumCookies.slice(0, showNumCookies.length - 3) + "," + showNumCookies.slice(showNumCookies.length - 3)
+  }
+  if (showNumCookies.length > 7) {
+    showNumCookies = showNumCookies.slice(0, showNumCookies.length - 7) + "," + showNumCookies.slice(showNumCookies.length - 7)
+  }
+
+
+  cookies.innerText = showNumCookies
   renderStats()}, 10)
