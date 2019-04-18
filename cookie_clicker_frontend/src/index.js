@@ -56,7 +56,7 @@ let totalClicks = 0
 let totalCookies = 0
 let numCookies = 0
 let cps = 0
-let cpc = 100000
+let cpc = 1
 
 let ians = 0
 let iansCost = 20
