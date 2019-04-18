@@ -4,6 +4,8 @@
 
 @import "compass/css3/transform";
 @import url(https://fonts.googleapis.com/css?family=Bangers);
+@import url(https://fonts.googleapis.com/css?family=Londrina+Sketch);
+
 body {
 
  background-color: #ED6565;
@@ -114,8 +116,104 @@ img:active {
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
+
 .letter-change:hover{
      color: #68cacb;
      font-size: 210px;
      text-shadow: 5px 5px 0 rgb(250, 250, 250);
 }
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #1d88e5;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px #fff;
+}
+
+.button:hover {background-color:#68cacb}
+
+.button:active {
+  background-color: #0d47a1;
+  box-shadow: 0 5px #fff;
+  transform: translateY(4px);
+}
+
+.waves-effect.waves-light.btn.cyan.lighten-3{
+  border-radius: 10px;
+}
+
+.waves-effect.waves-light.btn.light-blue.darken-1{
+  border-radius: 10px;
+}
+
+.waves-effect.waves-light.btn.light-blue.darken-4{
+   border-radius: 10px;
+}
+
+.waves-effect.waves-light.btn.orange.lighten-3{
+  border-radius: 10px;
+}
+
+h3{
+  font-family: 'Londrina Sketch', cursive;
+}
+
+#restart-button{
+  padding: 6px 15px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color:#1d88e5;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px #fff;
+}
+
+#restart-button:hover {background-color:#68cacb}
+
+#start{
+  display: inline-block;
+  padding: 6px 15px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #1d88e5;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px #fff;
+}
+
+.submit{
+  display: inline-block;
+  padding: 6px 15px;
+  margin-top: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #1d88e5;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px #fff;
+
+}
+

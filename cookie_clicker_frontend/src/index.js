@@ -216,7 +216,7 @@ start.addEventListener('click', (e) => {
 })
 
 clickCookie.addEventListener('click', (e) => {
-  if (e.target.id === 'cookie-click' && startTime != 0 && startTime != 61) {
+  if (e.target.id === 'cookie-click' && startTime != 0 && startTime != 5) {
     numCookies += cpc
     totalCookies += cpc
     totalClicks += 1
@@ -501,11 +501,18 @@ function startContainer() {
 
       <div class="col s12">
         <div class="" id="start-page">
+
           <div class="col s12">
-            <button class="waves-effect waves-light btn-large blue darken-1 start-button" id="one-min-game" type="button" name="">1 Minute Game</button>
-            <button class="waves-effect waves-light btn-large blue darken-1 start-button" id="classic-game" type="button" name="">Classic Game</button>
-            <button class="waves-effect waves-light btn-large blue darken-1 start-button" id="custom-game" type="button" name="">Custom Game</button>
+            <button class="button" id="one-min-game" type="button" name="">1 Minute Game</button>
+            <button class="button" id="classic-game" type="button" name="">Classic Game</button>
+            <button class="button" id="custom-game" type="button" name="">Custom Game</button>
           </div>
+       
+          <div class="col s12">
+           <br>
+            <button title="You have 60 Seconds to collect as many cookies as possible. Use your bakers (Ian, Vicky, and Alex) to help you produce more cookies. Once you collect enough, you can also upgrade each baker. The Super Clicker makes each click worth 2x its value! Scores are based on the total cookie count. Do you have what it takes to be on the HighScore Board? PLAY NOW!" class="button" id="instructions" type="button" name="">Instructions</button>
+          </div>
+
         </div>
       </div>
 
@@ -559,7 +566,7 @@ function landingPage() {
       const baker1Img = document.querySelector("#baker1Img").value
       const newButton = document.createElement("div")
       newButton.innerHTML = `
-        <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn light-blue darken-4" id="newButton">
+        <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn blue lighten-2" id="newButton">
           ${baker1Name} <br>🍪<span id='newButton-cost'>10</span>
           <span style="font-size:40px" id="newButton-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</span>
         </button>
@@ -588,7 +595,7 @@ function landingPage() {
         newButtonAmount += 1
         cookies.innerText = Math.floor(numCookies)
         newButton.innerHTML = `
-        <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn light-blue darken-4" id="newButton">
+        <button style="font-size:20px;width:100%;height:100px;margin-bottom:5px;" class="waves-effect waves-light btn blue lighten-2" id="newButton">
         ${baker1Name} <br>🍪<span id='newButton-cost'>${Math.round(newButtonCost)}</span>
         <span style="font-size:40px" id="newButton-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${newButtonAmount}</span>
         </button>
@@ -609,7 +616,7 @@ function landingPage() {
 
 
   document.querySelector('#one-min-game').addEventListener('click', () => {
-    startTime = 61
+    startTime = 5
     let a = document.querySelector('#start-container')
     a.parentNode.removeChild(a)
     document.querySelector('.body-container').hidden = false
