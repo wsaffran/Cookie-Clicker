@@ -61,14 +61,24 @@ let cpc = 1
 let ians = 0
 let iansCost = 20
 let ianscps = .1
+let iansTotalCps = 0
+let iansTotalCookies = 0
 
 let vickys = 0
 let vickysCost = 20
 let vickyscps = .1
+let vickysTotalCps = 0
+let vickysTotalCookies = 0
+
+
 
 let alexs = 0
 let alexsCost = 100
 let alexscps = .5
+let alexsTotalCps = 0
+let alexsTotalCookies = 0
+
+
 
 let dcvs = 0
 let dcvsCost = 200
@@ -222,6 +232,7 @@ ian.addEventListener('click', (e) => {
     document.querySelector('#ian-cost').innerText = `${Math.round(iansCost)}`
     cps += ianscps
     ians += 1
+    iansTotalCps = Math.floor(ians * ianscps * 10) /10
     cookies.innerText = Math.floor(numCookies)
     ianSpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ians}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
@@ -238,6 +249,7 @@ vicky.addEventListener('click', (e) => {
     document.querySelector('#vicky-cost').innerText = `${Math.round(vickysCost)}`
     cps += vickyscps
     vickys += 1
+    vickysTotalCps = Math.floor(vickys * vickyscps * 10) /10
     cookies.innerText = Math.floor(numCookies)
     vickySpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vickys}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
@@ -254,6 +266,7 @@ alex.addEventListener('click', (e) => {
     document.querySelector('#alex-cost').innerText = `${Math.round(alexsCost)}`
     cps += alexscps
     alexs += 1
+    alexsTotalCps = Math.floor(alexs * alexscps * 10) /10
     cookies.innerText = Math.floor(numCookies)
     alexSpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${alexs}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
@@ -283,6 +296,8 @@ increaseIanButton.addEventListener('click', (e)=> {
     ianscps *= 1.5
     cps += ianscps*ians
     ianIncrease += 1
+    ianscps = Math.floor(ianscps * 100)/100
+    iansTotalCps = Math.floor(ians * ianscps * 10) / 10
     document.querySelector('#increase-ian-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ianIncrease}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
@@ -297,6 +312,9 @@ increaseVickyButton.addEventListener('click', (e) => {
     vickyscps *= 1.5
     cps += vickyscps*vickys
     vickyIncrease += 1
+    vickyscps = Math.floor(vickyscps * 100)/100
+    vickysTotalCps = Math.floor(vickys * vickyscps * 10) / 10
+
     document.querySelector('#increase-vicky-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vickyIncrease}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
@@ -311,6 +329,9 @@ increaseAlexButton.addEventListener('click', (e) => {
     alexscps *= 1.75
     cps += alexscps*alexs
     alexIncrease += 1
+    alexscps = Math.floor(alexscps * 100)/100
+    alexsTotalCps = Math.floor(alexs * alexscps * 10) / 10
+
     document.querySelector('#increase-alex-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${alexIncrease}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
@@ -362,6 +383,26 @@ function renderStats() {
   document.querySelector('#c-p-c').innerText = cpc
   document.querySelector('#t-c').innerText = totalClicks
 
+  document.querySelector('#num-ians').innerText = ians
+  document.querySelector('#cps-ians').innerText = ianscps
+  document.querySelector('#num-ians-total').innerText = ians
+  document.querySelector('#cps-total-ians').innerText = iansTotalCps
+  document.querySelector('#ians-total-cookies').innerText = Math.round(iansTotalCookies)
+
+  document.querySelector('#num-vickys').innerText = vickys
+  document.querySelector('#cps-vickys').innerText = vickyscps
+  document.querySelector('#num-vickys-total').innerText = vickys
+  document.querySelector('#cps-total-vickys').innerText = vickysTotalCps
+  document.querySelector('#vickys-total-cookies').innerText = Math.round(vickysTotalCookies)
+
+  document.querySelector('#num-alexs').innerText = alexs
+  document.querySelector('#cps-alexs').innerText = alexscps
+  document.querySelector('#num-alexs-total').innerText = alexs
+  document.querySelector('#cps-total-alexs').innerText = alexsTotalCps
+  document.querySelector('#alexs-total-cookies').innerText = Math.round(alexsTotalCookies)
+
+
+
 }
 
 function renderStatsNew() {
@@ -376,6 +417,25 @@ function renderStatsNew() {
   document.querySelector('#c-p-s').innerText = Math.round(cps * 10) / 10
   document.querySelector('#c-p-c').innerText = cpc
   document.querySelector('#t-c').innerText = totalClicks
+
+  document.querySelector('#num-ians').innerText = ians
+  document.querySelector('#cps-ians').innerText = ianscps
+  document.querySelector('#num-ians-total').innerText = ians
+  document.querySelector('#cps-total-ians').innerText = iansTotalCps
+  document.querySelector('#ians-total-cookies').innerText = Math.round(iansTotalCookies)
+
+  document.querySelector('#num-vickys').innerText = vickys
+  document.querySelector('#cps-vickys').innerText = vickyscps
+  document.querySelector('#num-vickys-total').innerText = vickys
+  document.querySelector('#cps-total-vickys').innerText = vickysTotalCps
+  document.querySelector('#vickys-total-cookies').innerText = Math.round(vickysTotalCookies)
+
+  document.querySelector('#num-alexs').innerText = alexs
+  document.querySelector('#cps-alexs').innerText = alexscps
+  document.querySelector('#num-alexs-total').innerText = alexs
+  document.querySelector('#cps-total-alexs').innerText = alexsTotalCps
+  document.querySelector('#alexs-total-cookies').innerText = Math.round(alexsTotalCookies)
+
 
 }
 
@@ -437,7 +497,8 @@ function startContainer() {
   return `
   <div id="start-container" class="valign-wrapper center-align" style="padding-top: 100px;padding-bottom: 400px;background-image:url('../milk.jpg');background-size: 100% 100%;background-repeat: no-repeat;">
     <div class="row">
-      <h1 style="color: rgb(29, 136, 229);font-size:200px;padding-bottom: 120px">Cookie Clicker</h1>
+    <div class="color-change"><h1 style="color: rgb(29, 136, 229);font-size:200px;padding-bottom: 120px"><span class="letter-change">C</span><span class="letter-change">o</span><span class="letter-change">o</span><span class="letter-change">k</span><span class="letter-change">i</span><span class="letter-change">e </span><span class="letter-change">C</span><span class="letter-change">l</span><span class="letter-change">i</span><span class="letter-change">c</span><span class="letter-change">k</span><span class="letter-change">e</span><span class="letter-change">r</span></h1></div>
+
       <div class="col s12">
         <div class="" id="start-page">
 
@@ -648,7 +709,9 @@ let cookieRate = setInterval(function() {
     }
   }
 
-
+  iansTotalCookies += ianscps/100 * ians
+  vickysTotalCookies += vickyscps/100 * vickys
+  alexsTotalCookies += alexscps/100 * alexs
 
 
   numCookies += cps/100
