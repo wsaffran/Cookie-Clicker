@@ -56,7 +56,7 @@ let totalClicks = 0
 let totalCookies = 0
 let numCookies = 0
 let cps = 0
-let cpc = 1
+let cpc = 1000
 
 let ians = 0
 let iansCost = 20
@@ -216,7 +216,7 @@ start.addEventListener('click', (e) => {
 })
 
 clickCookie.addEventListener('click', (e) => {
-  if (e.target.id === 'cookie-click' && startTime != 0 && startTime != 5) {
+  if (e.target.id === 'cookie-click' && startTime != 0 && startTime != 61) {
     numCookies += cpc
     totalCookies += cpc
     totalClicks += 1
@@ -226,7 +226,7 @@ clickCookie.addEventListener('click', (e) => {
 })
 
 ian.addEventListener('click', (e) => {
-  if (e.target.id === 'ian' && numCookies >= iansCost) {
+  if (numCookies >= iansCost) {
     numCookies -= iansCost
     iansCost *= 1.15
     document.querySelector('#ian-cost').innerText = `${Math.round(iansCost)}`
@@ -243,7 +243,7 @@ ian.addEventListener('click', (e) => {
 })
 
 vicky.addEventListener('click', (e) => {
-  if (e.target.id === 'vicky' && numCookies >= vickysCost) {
+  if (numCookies >= vickysCost) {
     numCookies -= vickysCost
     vickysCost *= 1.15
     document.querySelector('#vicky-cost').innerText = `${Math.round(vickysCost)}`
@@ -260,7 +260,7 @@ vicky.addEventListener('click', (e) => {
 })
 
 alex.addEventListener('click', (e) => {
-  if (e.target.id === 'alex' && numCookies >= alexsCost) {
+  if (numCookies >= alexsCost) {
     numCookies -= alexsCost
     alexsCost *= 1.5
     document.querySelector('#alex-cost').innerText = `${Math.round(alexsCost)}`
@@ -507,10 +507,36 @@ function startContainer() {
             <button class="button" id="classic-game" type="button" name="">Classic Game</button>
             <button class="button" id="custom-game" type="button" name="">Custom Game</button>
           </div>
-       
+
           <div class="col s12">
            <br>
-            <button title="You have 60 Seconds to collect as many cookies as possible. Use your bakers (Ian, Vicky, and Alex) to help you produce more cookies. Once you collect enough, you can also upgrade each baker. The Super Clicker makes each click worth 2x its value! Scores are based on the total cookie count. Do you have what it takes to be on the HighScore Board? PLAY NOW!" class="button" id="instructions" type="button" name="">Instructions</button>
+
+
+           <!-- Trigger/Open The Modal -->
+            <button class="button" id="instructions" type="button" name="">Instructions</button>
+
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close">&times;</span>
+
+                <h1 style="font-size:60px;color:black;letter-spacing:6px;background-color:rgb(29, 136, 229)">Instructions</h1><br>
+                <h3>1 Min Game</h3>
+                <p style="font-size:17px">You have 60 Seconds to collect as many cookies as possible. Use your bakers (Ian, Vicky, and Alex) to help you produce more cookies. Once you collect enough, you can also upgrade each baker. The Super Clicker makes each click worth 2x its value! Scores are based on the total cookie count. Do you have what it takes to be on the HighScore Board? PLAY NOW!</p>
+                <h3>Classic Game</h3>
+                <p style="font-size:17px">Collect as many cookies as you want. Use your bakers (Ian, Vicky, and Alex) to help you produce more cookies. Once you collect enough, you can also upgrade each baker. The Super Clicker makes each click worth 2x its value! PLAY NOW!</p>
+                <p style="font-size:17px">p.s. You can use this mode as practice for the 1 min challenge!</p>
+                <h3>Custom Game</h3>
+                <p style="font-size:17px">Same as the classic game, but you can add your own baker! Oh man... PLAY NOW!</p><br>
+
+              </div>
+
+            </div>
+
+
+
           </div>
 
         </div>
@@ -616,7 +642,7 @@ function landingPage() {
 
 
   document.querySelector('#one-min-game').addEventListener('click', () => {
-    startTime = 5
+    startTime = 61
     let a = document.querySelector('#start-container')
     a.parentNode.removeChild(a)
     document.querySelector('.body-container').hidden = false
@@ -627,6 +653,40 @@ function landingPage() {
   })
 
 }
+
+
+
+
+
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("instructions");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
 
 
 
