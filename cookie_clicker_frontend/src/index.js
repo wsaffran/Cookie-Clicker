@@ -130,7 +130,6 @@ form.addEventListener('submit', (e) => {
 start.addEventListener('click', (e) => {
   start.remove()
   restartButton.hidden = true
-  console.log("started");
 
   let cookieRate = setInterval(function() {
     if (numCookies < iansCost) {
@@ -199,8 +198,22 @@ start.addEventListener('click', (e) => {
 
     numCookies += cps/100
     totalCookies += cps/100
+
+
+    showNumCookies = Math.floor(numCookies).toString()
+    if (showNumCookies.length > 3) {
+      showNumCookies = showNumCookies.slice(0, showNumCookies.length - 3) + "," + showNumCookies.slice(showNumCookies.length - 3)
+    }
+    if (showNumCookies.length > 7) {
+      showNumCookies = showNumCookies.slice(0, showNumCookies.length - 7) + "," + showNumCookies.slice(showNumCookies.length - 7)
+    }
+
+
+
     renderStats()
-    cookies.innerText = Math.floor(numCookies)}, 10)
+
+
+    cookies.innerText = showNumCookies}, 10)
 
 
   timer = setInterval(() => {
@@ -428,9 +441,24 @@ function renderStatsNew() {
   helperNumber += parseInt(document.querySelector('#vicky-amount').innerText)
   helperNumber += parseInt(document.querySelector('#alex-amount').innerText)
   helperNumber += parseInt(document.querySelector('#newButton-amount').innerText)
+  showNumCookies = Math.floor(numCookies).toString()
+  if (showNumCookies.length > 3) {
+    showNumCookies = showNumCookies.slice(0, showNumCookies.length - 3) + "," + showNumCookies.slice(showNumCookies.length - 3)
+  }
+  if (showNumCookies.length > 7) {
+    showNumCookies = showNumCookies.slice(0, showNumCookies.length - 7) + "," + showNumCookies.slice(showNumCookies.length - 7)
+  }
 
-  document.querySelector('#stats-num-cookies').innerText = Math.floor(numCookies)
-  document.querySelector('#stats-total-cookies').innerText = Math.round(totalCookies)
+  numTotalCookies = Math.floor(totalCookies).toString()
+  if (numTotalCookies.length > 3) {
+    numTotalCookies = numTotalCookies.slice(0, numTotalCookies.length - 3) + "," + numTotalCookies.slice(numTotalCookies.length - 3)
+  }
+  if (numTotalCookies.length > 7) {
+    numTotalCookies = numTotalCookies.slice(0, numTotalCookies.length - 7) + "," + numTotalCookies.slice(numTotalCookies.length - 7)
+  }
+
+  document.querySelector('#stats-num-cookies').innerText = showNumCookies
+  document.querySelector('#stats-total-cookies').innerText = numTotalCookies
   document.querySelector('#stats-helper-number').innerText = helperNumber
   document.querySelector('#c-p-s').innerText = Math.round(cps * 10) / 10
   document.querySelector('#c-p-c').innerText = cpc
