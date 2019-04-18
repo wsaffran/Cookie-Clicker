@@ -120,6 +120,14 @@ form.addEventListener('submit', (e) => {
         counter++
         if (json.length == highscore.id) {
           alert(`You scored ${highscore.highscore}! You are #${counter} out of ${sortedList.length} players`)
+          if (counter <= 10) {
+            document.querySelector("#header").innerHTML += `
+            <video controls="controls" width="800" height="600" autoplay = "true" name="Video Name" src="../evansCookie.MOV"></video> `
+
+            document.querySelector("video").addEventListener('ended', function () {
+              document.querySelector("video").remove()
+            })
+          }
         }
       })
     })
