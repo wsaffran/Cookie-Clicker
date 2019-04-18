@@ -223,7 +223,7 @@ ian.addEventListener('click', (e) => {
     cps += ianscps
     ians += 1
     cookies.innerText = Math.floor(numCookies)
-    ianSpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ians}`
+    ianSpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ians}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
     document.querySelector("#addIan").innerHTML += `
     <img src="../ian.jpg" width="70px" height="70px" alt="" class="circle responsive-img">
@@ -239,7 +239,7 @@ vicky.addEventListener('click', (e) => {
     cps += vickyscps
     vickys += 1
     cookies.innerText = Math.floor(numCookies)
-    vickySpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vickys}`
+    vickySpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vickys}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
     document.querySelector("#addVicky").innerHTML += `
     <img src="../vicky.jpg" width="70px" height="70px" alt="" class="circle responsive-img">
@@ -255,7 +255,7 @@ alex.addEventListener('click', (e) => {
     cps += alexscps
     alexs += 1
     cookies.innerText = Math.floor(numCookies)
-    alexSpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${alexs}`
+    alexSpan.innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${alexs}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
     document.querySelector("#addAlex").innerHTML += `
     <img src="https://avatars1.githubusercontent.com/u/12286943?s=460&v=4" width="70px" height="70px" alt="" class="circle responsive-img">
@@ -270,7 +270,7 @@ dcvButton.addEventListener('click', (e) => {
     dcvsCost *= 3
     dcvCost.innerText = `${Math.round(dcvsCost)}`
     dcvs += 1
-    document.querySelector('#dcv-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dcvs}`
+    document.querySelector('#dcv-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${dcvs}`
   }
 })
 
@@ -283,7 +283,7 @@ increaseIanButton.addEventListener('click', (e)=> {
     ianscps *= 1.5
     cps += ianscps*ians
     ianIncrease += 1
-    document.querySelector('#increase-ian-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ianIncrease}`
+    document.querySelector('#increase-ian-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${ianIncrease}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
 })
@@ -297,7 +297,7 @@ increaseVickyButton.addEventListener('click', (e) => {
     vickyscps *= 1.5
     cps += vickyscps*vickys
     vickyIncrease += 1
-    document.querySelector('#increase-vicky-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vickyIncrease}`
+    document.querySelector('#increase-vicky-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${vickyIncrease}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
 })
@@ -311,7 +311,7 @@ increaseAlexButton.addEventListener('click', (e) => {
     alexscps *= 1.75
     cps += alexscps*alexs
     alexIncrease += 1
-    document.querySelector('#increase-alex-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${alexIncrease}`
+    document.querySelector('#increase-alex-amount').innerHTML = `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${alexIncrease}`
     cpsSpan.innerHTML = `${Math.round( cps * 10 ) / 10} cookies per second`
   }
 })
