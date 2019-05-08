@@ -59,13 +59,13 @@ let cps = 0
 let cpc = 1
 
 let ians = 0
-let iansCost = 20
+let iansCost = 10
 let ianscps = .1
 let iansTotalCps = 0
 let iansTotalCookies = 0
 
 let vickys = 0
-let vickysCost = 20
+let vickysCost = 10
 let vickyscps = .1
 let vickysTotalCps = 0
 let vickysTotalCookies = 0
@@ -73,7 +73,7 @@ let vickysTotalCookies = 0
 
 
 let alexs = 0
-let alexsCost = 100
+let alexsCost = 50
 let alexscps = .5
 let alexsTotalCps = 0
 let alexsTotalCookies = 0
@@ -81,16 +81,16 @@ let alexsTotalCookies = 0
 
 
 let dcvs = 0
-let dcvsCost = 200
+let dcvsCost = 150
 
 let ianIncrease = 0
-let ianIncreaseCost = 100
+let ianIncreaseCost = 75
 
 let vickyIncrease = 0
-let vickyIncreaseCost = 100
+let vickyIncreaseCost = 75
 
 let alexIncrease = 0
-let alexIncreaseCost = 200
+let alexIncreaseCost = 150
 
 let showNumCookies = "0"
 
@@ -601,11 +601,11 @@ function startContainer() {
 
           <h3 style="color:white">Add New Bakers!</h3>
             <div class="col s6">
-              <input id="baker1Name" type="text" name="name" value="" placeholder="Enter a baker's name..." class="input-text style="color:black">
+              <input id="baker1Name" type="text" name="name" value="" placeholder="Enter a baker's name..." class="input-text" style="color:white">
             </div>
 
             <div class="col s6">
-              <input id="baker1Img" type="text" name="image" value="" placeholder="Enter your baker's image URL..." class="input-text" style="color:white">
+              <input id="baker1Img" type="text" name="image" value="" placeholder="Enter baker's image URL..." class="input-text" style="color:white">
             </div>
 
           <input id ="submitBaker" class="waves-effect waves-light btn-large blue darken-1 submit" type="submit" name="submit" value="Start Game">
@@ -680,15 +680,17 @@ function landingPage() {
         <span style="font-size:40px" id="newButton-amount">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${newButtonAmount}</span>
         </button>
         `
+    
         cpsSpan.innerHTML = `${Math.round(cps * 10) / 10} cookies per second`
-        renderStatsNew()
-
+        
         const newDiv = document.createElement("div")
-        const appendNewBaker = document.querySelector("#test-swipe-1").lastElementChild
+        const appendNewBaker = document.querySelector("#test-swipe-2").lastElementChild
         appendNewBaker.appendChild(newDiv)
         newDiv.innerHTML += `
-          <img src="${baker1Img}" width="70px" height="70px" alt="" class="circle responsive-img">
+        <img src="${baker1Img}" width="70px" height="70px" alt="" class="circle responsive-img">
         `
+
+        renderStatsNew()
       }
     })
   })
@@ -701,9 +703,6 @@ function landingPage() {
     a.parentNode.removeChild(a)
     document.querySelector('.body-container').hidden = false
     document.querySelector('#header').hidden = false
-    // document.querySelector(".container").innerHTML += `
-    // <button class="waves-effect waves-light btn blue darken-1" id='start'>START</button>
-    // `
   })
 
 }
@@ -838,7 +837,6 @@ let cookieRate = setInterval(function() {
   if (showNumCookies.length > 7) {
     showNumCookies = showNumCookies.slice(0, showNumCookies.length - 7) + "," + showNumCookies.slice(showNumCookies.length - 7)
   }
-
 
   cookies.innerText = showNumCookies
   renderStats()}, 10)
